@@ -1,13 +1,17 @@
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import PostBox from './components/PostBox'
 import PostList from './components/PostList'
+import PostDetails from './components/PostDetails'
 
-function App() {
+const App = () => {
 
   return (
     <>
       <Header />
-      <PostList />
+      <Routes>
+        <Route path="/" element={<PostList />} />
+        <Route path="/post/:id" element={<PostDetails />} />
+      </Routes>
     </>
   )
 }
