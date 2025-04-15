@@ -3,17 +3,11 @@ import PostBox from './PostBox'
 
 const PostList = () => {
 
-    return (
-        <>
-            {posts.map((post) => 
-                <PostBox 
-                    title={post.title}
-                    createdAt={post.createdAt}
-                    categories={post.categories}
-                    content={post.content} 
-                />)}
-        </>     
-    )
+  return (
+    <>
+      {posts.map((post) => <PostBox key={post.id} post={post} />)}
+    </>     
+  )
 }
 
 export default PostList
