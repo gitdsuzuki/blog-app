@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import Header from './components/Header'
+import PostBox from './components/PostBox'
+import PostList from './components/PostList'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div class="text-[100px]">
-      Hello World
-    </div>
+    <>
+      <Header />
+      <PostList />
+    </>
   )
 }
 
