@@ -1,15 +1,27 @@
 import Dayjs from 'dayjs';
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { posts } from '../data/posts.js'
-import PostNotFound from './PostNotFound.jsx';
+import PostNotFound from './PostNotFound';
 
 const PostDetails = () => {
   
   const { id } = useParams()
-  const post = posts.find((elem) => elem.id == id)
+  const [post, setPosts] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  if (!post) return <PostNotFound /> 
-
+  useEffect(() => {
+    const fetcher = async () => {
+      const res = await fetch(`https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${id}`)
+      const data = await res.json()
+      setPosts(data.post)
+      setLoading(false)
+    }
+    fetcher()
+  }, [])
+  
+  if (loading) return <p>読み込み中です...</p>
+  if (!post) return <PostNotFound />
+  
   const { title, thumbnailUrl, createdAt, categories, content } = post
 
   return (
