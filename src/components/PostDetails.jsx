@@ -1,11 +1,15 @@
 import Dayjs from 'dayjs';
 import { useParams } from 'react-router-dom'
 import { posts } from '../data/posts.js'
+import PostNotFound from './PostNotFound.jsx';
 
 const PostDetails = () => {
   
   const { id } = useParams()
   const post = posts.find((elem) => elem.id == id)
+
+  if (!post) return <PostNotFound /> 
+
   const { title, thumbnailUrl, createdAt, categories, content } = post
 
   return (
