@@ -7,7 +7,7 @@ const Header = () => {
         <Link to="/"><h1>Blog</h1></Link>
       </div>
       <div className="flex flex-auto justify-end">
-        <a>お問い合わせ</a>
+        <Link to="/contact">お問い合わせ</Link>
       </div>
     </div>
   )
