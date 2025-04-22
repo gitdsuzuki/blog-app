@@ -50,7 +50,13 @@ const Contact = () => {
     setMessageError('')
   }
 
-  const fetcher = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    
+    if (!isValidForm()) return
+
+    setSubmitting(true)
+
     const response = await fetch(
       'https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts',
       {
@@ -68,12 +74,7 @@ const Contact = () => {
     } else {
       window.alert('通信エラーです。')
     }
-  }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    setSubmitting(true)
-    if (isValidForm()) fetcher()
     setSubmitting(false)
   }
 
